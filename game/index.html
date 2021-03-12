@@ -19,15 +19,41 @@
   document.body.appendChild(renderer.domElement);
 
   // ******** START CODING ON THE NEXT LINE ********
-var body = new THREE.SphereGeometry(100);
-    var cover = new THREE.MeshNormalMaterial(flat);
-    var avatar = new THREE.Mesh(body, cover);
+    var pink = new THREE.MeshPhongMaterial({color:"pink"});
+    var purple = new THREE.MeshPhongMaterial({color:"purple"});
+    
+var body = new THREE.SphereGeometry(100,100,100);
+    var avatar = new THREE.Mesh(body, purple);
     scene.add (avatar);
     
-    
+    var cabeza = new THREE.SphereGeometry(80,80,80);
+    var cabeza1 = new THREE.Mesh(cabeza, pink);
+    cabeza1.position.set(0,150,0);
+    scene.add (cabeza1);
     
 
+    
+    var mano = new THREE.SphereGeometry(50,50,50);
+    
+    var mano1 = new THREE.Mesh(mano, pink);
+    mano1.position.set(-150,0,0);
+    scene.add (mano1);
+    
+    var mano2 = new THREE.Mesh(mano, pink);
+    mano2.position.set(150,0,0);
+    scene.add (mano2);
+    
+    var pie = new THREE.SphereGeometry(50,50,50);
+    
+    var pie1 = new THREE.Mesh(pie, pink);
+    pie1.position.set(-75,-125,0);
+    scene.add (pie1);
 
+    var pie2 = new THREE.Mesh(pie, pink);
+    pie2.position.set(75,-125,0);
+    scene.add (pie2);
+
+   
 
   // Now, show what the camera sees on the screen:
   renderer.render(scene, camera);
