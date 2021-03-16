@@ -7,6 +7,11 @@
   var light = new THREE.AmbientLight('white', 0.8);
   scene.add(light);
     
+    var scene = new THREE.Scene();
+var flat = {flatShading: true};
+var light = new THREE.PointLight('white', 0.8);
+scene.add(light)
+light.position.set(300,0,1500)
 
 
   // The "camera" is what sees the stuff:
