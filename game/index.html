@@ -6,6 +6,8 @@
   var flat = {flatShading: true};
   var light = new THREE.AmbientLight('white', 0.8);
   scene.add(light);
+    
+
 
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
@@ -22,39 +24,43 @@
     var pink = new THREE.MeshPhongMaterial({color:"pink"});
     var purple = new THREE.MeshPhongMaterial({color:"purple"});
     
-var body = new THREE.SphereGeometry(100,100,100);
+var body = new THREE.SphereGeometry(100,100,5);
     var avatar = new THREE.Mesh(body, purple);
     scene.add (avatar);
     
-    var cabeza = new THREE.SphereGeometry(80,80,80);
+    var cabeza = new THREE.SphereGeometry(80,80,5);
     var cabeza1 = new THREE.Mesh(cabeza, pink);
     cabeza1.position.set(0,150,0);
-    scene.add (cabeza1);
+    avatar.add (cabeza1);
     
 
     
-    var mano = new THREE.SphereGeometry(50,50,50);
+    var mano = new THREE.SphereGeometry(50,50,5);
     
     var mano1 = new THREE.Mesh(mano, pink);
     mano1.position.set(-150,0,0);
-    scene.add (mano1);
+    avatar.add (mano1);
     
     var mano2 = new THREE.Mesh(mano, pink);
     mano2.position.set(150,0,0);
-    scene.add (mano2);
+    avatar.add (mano2);
     
-    var pie = new THREE.SphereGeometry(50,50,50);
+    var pie = new THREE.SphereGeometry(50,50,5);
     
     var pie1 = new THREE.Mesh(pie, pink);
     pie1.position.set(-75,-125,0);
-    scene.add (pie1);
+    avatar.add (pie1);
 
     var pie2 = new THREE.Mesh(pie, pink);
     pie2.position.set(75,-125,0);
-    scene.add (pie2);
-
+    avatar.add (pie2);
    
 
   // Now, show what the camera sees on the screen:
-  renderer.render(scene, camera);
+    function animate() {
+    requestAnimationFrame(animate);
+    avatar.rotation.z = avatar.rotation.z + 0.05;
+    renderer.render(scene, camera);   
+    }
+  animate();
 </script>
