@@ -62,6 +62,27 @@ var body = new THREE.SphereGeometry(100,100,5);
    
 
   // Now, show what the camera sees on the screen:
+    document.addEventListener("keydown", teclaApretada);
+    
+    function teclaApretada(e) {
+        //alert(event.code);
+        let codigo = e.code;
+        
+        if (codigo =="KeyA") {
+            avatar.position.z +=5;
+        }
+        if (codigo =="KeyT") {
+            avatar.position.z -=5;
+        }
+    if (codigo =="KeyD") {
+            avatar.position.x +=5;
+        }
+        if (codigo =="KeyI") {
+            avatar.position.x -=5;
+        } 
+        
+    }
+    
     function animate() {
     requestAnimationFrame(animate);
     avatar.rotation.z = avatar.rotation.z + 0.05;
