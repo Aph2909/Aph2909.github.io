@@ -62,6 +62,9 @@ var body = new THREE.SphereGeometry(100,100,5);
    
 
   // Now, show what the camera sees on the screen:
+    let isCartWheeling = true;
+    let girodiferente = false;
+    
     document.addEventListener("keydown", teclaApretada);
     
     function teclaApretada(e) {
@@ -80,13 +83,28 @@ var body = new THREE.SphereGeometry(100,100,5);
         if (codigo =="KeyI") {
             avatar.position.x -=5;
         } 
+        if (codigo == "KeyC") {
+            isCartWheeling= !isCartWheeling;     
+        }
+        
+        if (codigo == "KeyG") {
+            girodiferente= !girodiferente;    
+        }
         
     }
     
     function animate() {
     requestAnimationFrame(animate);
+        if (isCartWheeling) {
     avatar.rotation.z = avatar.rotation.z + 0.05;
+        }
+        
+        if (girodiferente) {
+    avatar.rotation.x = avatar.rotation.x + 0.05;
+        }
+        
     renderer.render(scene, camera);   
     }
+    
   animate();
 </script>
