@@ -90,8 +90,39 @@ var body = new THREE.SphereGeometry(100,100,5);
         if (codigo == "KeyG") {
             girodiferente= !girodiferente;    
         }
-        
+      
     }
+    function makeTreeAt(x,z){
+      var trunk = new THREE.Mesh(
+new THREE.CylinderGeometry(50,50,200),
+new THREE.MeshBasicMaterial({color: 'sienna'})
+
+);
+
+
+var top = new THREE.Mesh(
+new THREE.SphereGeometry(150),
+new THREE.MeshBasicMaterial({color: 'forestgreen'})
+
+);
+
+top.position.y = 175;
+trunk.add(top);
+
+
+trunk.position.set(x,-75,z)
+scene.add(trunk);
+
+}
+
+
+   function makeTreesAt(cantidad) {
+       for(var i = 1; i<cantidad; i++) {
+           makeTreeAt((Math.random()*5000)-2500,-Math.random()*5000, Math.random()*150+100);
+       }
+   }
+    
+   makeTreesAt(60);
     
     function animate() {
     requestAnimationFrame(animate);
