@@ -17,7 +17,7 @@ light.position.set(300,0,1500)
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
   var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
-  camera.position.z = 500;
+  camera.position.z = 1000;
   scene.add(camera);
 
   // The "renderer" draws what the camera sees onto the screen:
@@ -122,7 +122,19 @@ scene.add(trunk);
        }
    }
     
-   makeTreesAt(60);
+   //makeTreesAt(60);
+    
+    function makeCampoCultivo(numArboles) {
+       for(var i = 1; i<numArboles; i++) {
+           var filas
+           var columnas
+           var separación
+           makeTreeAt((Math.random()*5000)-2500,-Math.random()*5000, Math.random()*150+100);
+       }
+    
+   }
+    
+    makeCampoCultivo(60);
     
     function animate() {
     requestAnimationFrame(animate);
