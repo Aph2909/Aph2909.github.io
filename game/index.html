@@ -11,13 +11,14 @@
 var flat = {flatShading: true};
 var light = new THREE.PointLight('white', 0.8);
 scene.add(light)
-light.position.set(300,0,1500)
+light.position.set(3000,0,5000)
 
 
   // The "camera" is what sees the stuff:
   var aspectRatio = window.innerWidth / window.innerHeight;
   var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
-  camera.position.z = 1000;
+  camera.position.z = 1300;
+camera.position.y = 500;
   scene.add(camera);
 
   // The "renderer" draws what the camera sees onto the screen:
@@ -55,10 +56,13 @@ var body = new THREE.SphereGeometry(100,100,5);
     var pie1 = new THREE.Mesh(pie, pink);
     pie1.position.set(-75,-125,0);
     avatar.add (pie1);
+    
+   
 
     var pie2 = new THREE.Mesh(pie, pink);
     pie2.position.set(75,-125,0);
     avatar.add (pie2);
+    camera.lookAt(avatar.position);
    
 
   // Now, show what the camera sees on the screen:
@@ -124,17 +128,28 @@ scene.add(trunk);
     
    //makeTreesAt(60);
     
-    function makeCampoCultivo(numArboles) {
-       for(var i = 1; i<numArboles; i++) {
-           var filas
-           var columnas
-           var separación
-           makeTreeAt((Math.random()*5000)-2500,-Math.random()*5000, Math.random()*150+100);
-       }
     
+        
+    function makeFilaArboles(z, minimo_x, maximo_x, paso_x) {
+        
+    for(var x= minimo_x; x<maximo_x; x=x+paso_x) {
+           makeTreeAt(x,z)
+       }
    }
     
-    makeCampoCultivo(60);
+    
+    function makeCampoCultivo(minimo_x,minimo_z,maximo_x,maximo_z, paso) {
+        
+    for(var z= minimo_z; z<maximo_z; z=z+paso) {
+           makeFilaArboles(z,minimo_x, maximo_x, paso)
+    }
+    }
+       
+    
+    makeCampoCultivo(-5000,-1000,5000,1000,500);
+    //makeFilaArboles(0,-5000,5000,500)
+    //makeFilaArboles(-1000,-1000,5000,100)
+        
     
     function animate() {
     requestAnimationFrame(animate);
