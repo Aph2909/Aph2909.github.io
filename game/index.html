@@ -19,7 +19,7 @@ light.position.set(3000,0,5000)
   var camera = new THREE.PerspectiveCamera(75, aspectRatio, 1, 10000);
   camera.position.z = 1300;
 camera.position.y = 500;
-  scene.add(camera);
+  //scene.add(camera);
 
   // The "renderer" draws what the camera sees onto the screen:
   var renderer = new THREE.WebGLRenderer({antialias: true});
@@ -32,7 +32,11 @@ camera.position.y = 500;
     
 var body = new THREE.SphereGeometry(100,100,5);
     var avatar = new THREE.Mesh(body, purple);
-    scene.add (avatar);
+    
+    var marcador = new THREE.Object3D();
+    scene.add(marcador);
+    //scene.add (avatar);
+    marcador.add(avatar);
     
     var cabeza = new THREE.SphereGeometry(80,80,5);
     var cabeza1 = new THREE.Mesh(cabeza, pink);
@@ -62,7 +66,10 @@ var body = new THREE.SphereGeometry(100,100,5);
     var pie2 = new THREE.Mesh(pie, pink);
     pie2.position.set(75,-125,0);
     avatar.add (pie2);
-    camera.lookAt(avatar.position);
+    
+    marcador.add(camera);
+    //avatar.add(camera);
+    //camera.lookAt(avatar.position);
    
 
   // Now, show what the camera sees on the screen:
@@ -76,16 +83,16 @@ var body = new THREE.SphereGeometry(100,100,5);
         let codigo = e.code;
         
         if (codigo =="KeyA") {
-            avatar.position.z +=5;
+            marcador.position.z +=5;
         }
         if (codigo =="KeyT") {
-            avatar.position.z -=5;
+            marcador.position.z -=5;
         }
     if (codigo =="KeyD") {
-            avatar.position.x +=5;
+            marcador.position.x +=5;
         }
         if (codigo =="KeyI") {
-            avatar.position.x -=5;
+            marcador.position.x -=5;
         } 
         if (codigo == "KeyC") {
             isCartWheeling= !isCartWheeling;     
